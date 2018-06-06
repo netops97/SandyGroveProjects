@@ -1,0 +1,44 @@
+{% load static %}
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>
+  {% block title %}
+  Untitled Document
+  {% endblock title %}
+</title>
+<link href="{% static 'main.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="wrapper">
+  <header id="header">
+    <div id="logo"><img src="{% static 'logo.jpg' %}" alt="ugh!"/></div>
+    <div id="topbanner"><img src="{% static 'top_banner.png' %}" width="800" height="200" alt=""/></div>
+  </header>
+  <aside id="leftsidebar">
+    <nav id="nav">
+    <ul>
+      {% block sidenav %}
+      <li>Menu 1</li><li>Menu 2</li><li>Menu 3</li>
+      {% endblock sidenav %}
+      <li><a href="/quote">Quotes</a></li>
+      <li><a href="/quote/show">Show Quotes</a></li>
+      <li><a href="/bgpman">BGP Manager</a></li>
+      <li><a href="/admin/">Admin Console</a></li>
+
+
+
+    </ul>
+    </nav>
+  </aside>
+  <section id="main">
+    {% block content %}
+    <h1>Welcome!</h1>
+    <p>This is the site template</p>
+    {% endblock content %}
+  </section>
+  <footer id="footer">Copyright &copy; 2018 Social Security Administration</footer>
+</div>
+</body>
+</html>
