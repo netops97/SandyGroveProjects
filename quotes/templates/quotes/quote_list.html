@@ -1,0 +1,26 @@
+{% extends "quotes/quote.html" %}
+
+{% block title %}All Quotes{% endblock title %}
+
+{% block content %}
+<h1>All Quotes</h1>
+
+<table style="border-collapse:collapse">
+    <tr class="quotehdr">
+        <th>ID</th><th>Client Name</th>
+        <th>Company</th><th>Submitted</th>
+        <th>Quoted</th><th>Quote Price</th>
+    </tr>
+    {% for quote in all_quotes %}
+        <tr class="quoterow {% cycle '' 'altrow' %}">
+            <td><a href="show/{{ quote.id }}">{{ quote.id }}</a></td>
+            <td>{{ quote.name }}</td>
+            <td>{{ quote.company }}</td>
+            <td>{{ quote.submitted|date:"m-d-y" }}</td>
+            <td>{{ quote.quotedate|date:"m-d-y"|default:"pending" }}</td>
+            <td>{{ quote.quoteprice|default:"--" }}
+</td>
+        </tr>
+    {% endfor %}
+</table>
+{% endblock content %}
